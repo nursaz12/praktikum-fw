@@ -45,7 +45,7 @@
                         <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">Type</th>
                         <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">information</th>
                         <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">qty</th>
-                        <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">producer</th>
+                        <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">Producer</th>
                         <th class="px-4 py-2 text-left text-gray-600 border border-gray-200">Aksi</th>
                     </tr>
                 </thead>

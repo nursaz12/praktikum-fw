@@ -78,8 +78,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = product::findOrFail($id);
-        return view('master-data.product-master.edit-product', compact('product'));
+        $product = Product::findOrFail($id);
+        $suppliers = Supplier::all();
+        return view('master-data.product-master.edit-product', compact('product', 'suppliers'));
     }
 
     /**
@@ -94,20 +95,22 @@ class ProductController extends Controller
             'information' => 'nullable|string',
             'qty' => 'required|integer|min:1',
             'producer' => 'required|string|max:255',
+            'supplier_id' => 'required|exists:suppliers,id', // Validasi supplier_id
         ]);
 
-        $products = product::findorFail($id);
-        $products->update([
+        $product = Product::findOrFail($id);
+
+        $product->update([
             'product_name' => $request->product_name,
             'unit' => $request->unit,
             'type' => $request->type,
             'information' => $request->information,
             'qty' => $request->qty,
             'producer' => $request->producer,
-
+            'supplier_id' => $request->supplier_id, // Update supplier_id
         ]);
 
-        return redirect()->back()->with('success', 'product update successfully');
+        return redirect()->route('product-index')->with('success', 'Product updated successfully!');
     }
 
     /**
